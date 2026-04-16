@@ -1,11 +1,11 @@
 import React from "react";
-import './header.css'
-import './HomePage.css'
+import "./header.css";
+import "./HomePage.css";
 
 export const HomePage = () => {
   return (
     <>
-    <title>Ecommerce Project</title>
+      <title>Ecommerce Project</title>
       <div className="header">
         <div className="left-section">
           <a href="/" className="header-link">
