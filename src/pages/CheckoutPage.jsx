@@ -4,20 +4,20 @@ import axios from "axios";
 import { CheckoutPageHeader } from "../components/CheckoutPageHeader";
 
 export const CheckoutPage = () => {
-  const [cartItem, setCartItem] = useState([]);
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:3000/api/cart-items",
-        );
-        setCartItem(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    getData();
-  }, []);
+  // const [cartItem, setCartItem] = useState([]);
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "http://localhost:3000/api/cart-items",
+  //       );
+  //       setCartItem(response.data);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   getData();
+  // }, []);
 
   console.log(cartItem);
   return (

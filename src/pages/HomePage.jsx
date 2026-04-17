@@ -3,17 +3,14 @@ import { Header } from "../components/Header";
 import axios from "axios";
 import "./HomePage.css";
 
-export const HomePage = () => {
+export const HomePage = ({cart}) => {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
       try {
         const productRes = await axios.get("/api/products");
         setProducts(productRes.data);
-        const cartRes = await axios.get("/api/cart-items") 
-        setCart(cartRes.data);
 
       } catch (error) {
         console.error(error);
