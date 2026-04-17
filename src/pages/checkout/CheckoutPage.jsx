@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./CheckoutPage.css";
 import axios from "axios";
-import { CheckoutPageHeader } from "../components/CheckoutPageHeader";
-import { formatMoney } from "../utils/money";
+import { CheckoutPageHeader } from "../../components/CheckoutPageHeader";
+import { formatMoney } from "../../utils/money";
 import dayjs from "dayjs";
 
 export const CheckoutPage = ({ cart }) => {

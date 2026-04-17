@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Header } from "../components/Header";
+import { Header } from "../../components/Header";
 import axios from "axios";
 import "./HomePage.css";
-import { formatMoney } from "../utils/money";
+import { formatMoney } from "../../utils/money";
 
 export const HomePage = ({cart}) => {
   const [products, setProducts] = useState([]);
