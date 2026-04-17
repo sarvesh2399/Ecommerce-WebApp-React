@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const cartRes = await axios.get("/api/cart-items");
+        const cartRes = await axios.get("/api/cart-items?expand=product");
         setCart(cartRes.data);
       } catch (error) {
         console.error(error);
