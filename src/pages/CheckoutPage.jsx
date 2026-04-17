@@ -5,10 +5,11 @@ import { CheckoutPageHeader } from "../components/CheckoutPageHeader";
 import { formatMoney } from "../utils/money";
 
 export const CheckoutPage = ({ cart }) => {
+  // console.log(cart)
   return (
     <>
       <title>Checkout</title>
-      <CheckoutPageHeader />
+      <CheckoutPageHeader cart = {cart} />
 
       <div className="checkout-page">
         <div className="page-title">Review your order</div>
@@ -17,7 +18,7 @@ export const CheckoutPage = ({ cart }) => {
           <div className="order-summary">
             {cart.map((cartItem) => {
               return (
-                <div className="cart-item-container">
+                <div key = {cartItem.id} className="cart-item-container">
                   <div className="delivery-date">
                     Delivery date: Tuesday, June 21
                   </div>

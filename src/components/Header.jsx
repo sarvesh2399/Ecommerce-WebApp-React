@@ -1,25 +1,23 @@
-import React from 'react'
-import { Link } from 'react-router'
-import "./Header.css"
+import React from "react";
+import { Link } from "react-router";
+import "./Header.css";
 
-export const Header = ({cart}) => {
-
-  let totalQuantity = 0;
-
+export const Header = ({ cart }) => {
   // cart.forEach((cartItem) => {
   //   totalQuantity += cartItem.quantity;
   // });
 
+  let totalQuantity = 0;
   for (let i = 0; i < cart.length; i++) {
     totalQuantity += cart[i].quantity;
   }
-//   const totalQuantity = cart.reduce((total, item) => {
-//   return total + item.quantity;
-// }, 0);
+  //   const totalQuantity = cart.reduce((total, item) => {
+  //   return total + item.quantity;
+  // }, 0);
 
   return (
     <>
-    <div className="header">
+      <div className="header">
         <div className="left-section">
           <Link to="/" className="header-link">
             <img className="logo" src="images/logo-white.png" />
@@ -48,5 +46,5 @@ export const Header = ({cart}) => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
