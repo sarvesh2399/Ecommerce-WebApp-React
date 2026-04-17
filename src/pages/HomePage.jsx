@@ -10,9 +10,9 @@ export const HomePage = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const productRes = await axios.get("http://localhost:3000/api/products");
+        const productRes = await axios.get("/api/products");
         setProducts(productRes.data);
-        const cartRes = await axios.get("http://localhost:3000/api/cart-items") 
+        const cartRes = await axios.get("/api/cart-items") 
         setCart(cartRes.data);
 
       } catch (error) {
