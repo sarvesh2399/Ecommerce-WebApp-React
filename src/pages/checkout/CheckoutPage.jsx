@@ -83,7 +83,7 @@ export const CheckoutPage = ({ cart, loadCart }) => {
                         <div className="product-name">
                           {cartItem.product.name}
                         </div>
-                
+
                         <div className="product-price">
                           {formatMoney(cartItem.product.priceCents)}
                         </div>
@@ -96,13 +96,14 @@ export const CheckoutPage = ({ cart, loadCart }) => {
                               style={{ marginLeft: "10px" }}
                               className="quantity-label"
                             >
-                              <UpdateQuantity cartItem={cartItem} loadCart={loadCart}/>
+                              <UpdateQuantity
+                                cartItem={cartItem}
+                                loadCart={loadCart}
+                              />
                             </span>
                           </span>
                           <br />
-                          <div
-                          >
-                           
+                          <div>
                             <span
                               className="delete-quantity-link link-primary"
                               onClick={deleteCartItem}
