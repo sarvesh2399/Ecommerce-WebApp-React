@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import "./CheckoutPage.css";
 import axios from "axios";
 import { CheckoutPageHeader } from "../../components/header/CheckoutPageHeader";
@@ -9,6 +10,12 @@ export const CheckoutPage = ({ cart, loadCart }) => {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
   const [paymentSummary, setPaymentSummary] = useState(null);
   // console.log(cart)
+  const navigate = useNavigate();
+  const createOrder = async () => {
+    await axios.post("/api/orders");
+    await loadCart();
+    navigate("/orders");
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -189,7 +196,10 @@ export const CheckoutPage = ({ cart, loadCart }) => {
                   </div>
                 </div>
 
-                <button className="place-order-button button-primary">
+                <button
+                  className="place-order-button button-primary"
+                  onClick={createOrder}
+                >
                   Place your order
                 </button>
               </>
