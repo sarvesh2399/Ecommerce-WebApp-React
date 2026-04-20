@@ -93,7 +93,7 @@ export const CheckoutPage = ({ cart, loadCart }) => {
                           >
                             Quantity:{" "}
                             <span
-                              style={{ marginLeft: "10px" }}
+                              style={{ marginLeft: "10px", marginRight:"10px" }}
                               className="quantity-label"
                             >
                               <UpdateQuantity
@@ -101,16 +101,14 @@ export const CheckoutPage = ({ cart, loadCart }) => {
                                 loadCart={loadCart}
                               />
                             </span>
-                          </span>
-                          <br />
-                          <div>
                             <span
                               className="delete-quantity-link link-primary"
                               onClick={deleteCartItem}
                             >
                               Delete
                             </span>
-                          </div>
+                          </span>
+                          <div></div>
                         </div>
                       </div>
 
