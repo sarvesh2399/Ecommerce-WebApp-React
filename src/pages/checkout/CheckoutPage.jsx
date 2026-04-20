@@ -69,7 +69,7 @@ export const CheckoutPage = ({ cart, loadCart }) => {
                     <div className="delivery-date">
                       Delivery date:{" "}
                       {dayjs(
-                        selectedDeliveryOption.estimitedDeliveryTimeMs,
+                        selectedDeliveryOption.estimatedDeliveryTimeMs,
                       ).format("dddd, MMMM D")}
                     </div>
 
@@ -130,6 +130,7 @@ export const CheckoutPage = ({ cart, loadCart }) => {
                             );
                             await loadCart();
                           };
+                          // console.log({deliveryOption})
                           return (
                             <div
                               key={deliveryOption.id}
@@ -149,7 +150,7 @@ export const CheckoutPage = ({ cart, loadCart }) => {
                               <div>
                                 <div className="delivery-option-date">
                                   {dayjs(
-                                    deliveryOption.estimitedDeliveryTimeMs,
+                                    deliveryOption.estimatedDeliveryTimeMs,
                                   ).format("dddd, MMMM D")}
                                 </div>
                                 <div className="delivery-option-price">
