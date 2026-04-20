@@ -5,13 +5,20 @@ import { ProductQuantityContainer } from "../../components/home/ProductQuantityC
 
 export const Product = ({ product, loadCart }) => {
   const [quantity, setQuantity] = useState(1);
+  const [showAdded, setShowAdded] = useState(false);
 
   const addToCart = async () => {
     await axios.post("/api/cart-items", {
       productId: product.id,
       quantity: quantity,
     });
+    setShowAdded(true);
+
     await loadCart();
+
+    setTimeout(() => {
+      setShowAdded(false);
+    }, 2000);
   };
 
   const selectQuantity = (event) => {
@@ -48,10 +55,12 @@ export const Product = ({ product, loadCart }) => {
 
         <div className="product-spacer"></div>
 
-        <div className="added-to-cart">
-          <img src="../../public/images/icons/checkmark.png" />
-          Added
-        </div>
+        {showAdded && (
+          <div className="added-to-cart">
+            <img src="../../public/images/icons/checkmark.png" />
+            Added
+          </div>
+        )}
 
         <button
           className="add-to-cart-button button-primary"
