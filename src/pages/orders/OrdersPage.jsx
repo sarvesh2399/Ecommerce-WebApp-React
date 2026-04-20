@@ -8,6 +8,7 @@ import { formatMoney } from "../../utils/money";
 
 export const OrdersPage = ({ cart, loadCart }) => {
   const [orders, setOrders] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const getData = async () => {
@@ -21,16 +22,31 @@ export const OrdersPage = ({ cart, loadCart }) => {
     getData();
   }, []);
 
+  const filteredOrders = orders.filter((order) => {
+    for (let i = 0; i < order.products.length; i++) {
+      const productName = order.products[i].product.name.toLowerCase();
+      const query = searchQuery.toLowerCase();
+
+      if (productName.includes(query)) {
+        return true; // keep this order
+      }
+    }
+    return false; // remove this order
+  });
   return (
     <>
       <title>Orders</title>
-      <Header cart={cart} />
+      <Header
+        cart={cart}
+        setSearchQuery={setSearchQuery}
+        searchQuery={searchQuery}
+      />
 
       <div className="orders-page">
         <div className="page-title">Your Orders</div>
 
         <div className="orders-grid">
-          {orders.map((order) => {
+          {filteredOrders.map((order) => {
             return (
               <div key={order.id} className="order-container">
                 <div className="order-header">
@@ -94,7 +110,9 @@ export const OrdersPage = ({ cart, loadCart }) => {
                         </div>
 
                         <div className="product-actions">
-                          <Link to={`/tracking/${order.id}/${orderProduct.product.id}`}>
+                          <Link
+                            to={`/tracking/${order.id}/${orderProduct.product.id}`}
+                          >
                             <button className="track-package-button button-secondary">
                               Track package
                             </button>

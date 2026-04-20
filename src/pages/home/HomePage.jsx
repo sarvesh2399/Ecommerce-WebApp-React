@@ -6,6 +6,7 @@ import { Product } from "./Product";
 
 export const HomePage = ({ cart, loadCart }) => {
   const [products, setProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const getData = async () => {
@@ -19,14 +20,22 @@ export const HomePage = ({ cart, loadCart }) => {
     getData();
   }, []);
 
+  const filteredProducts = products.filter((product) => {
+    return product.name.toLowerCase().includes(searchQuery.toLowerCase());
+  });
+
   return (
     <>
       <title>Ecommerce Project</title>
-      <Header cart={cart} />
+      <Header
+        cart={cart}
+        setSearchQuery={setSearchQuery}
+        searchQuery={searchQuery}
+      />
 
       <div className="home-page">
         <div className="products-grid">
-          {products.map((product) => {
+          {filteredProducts.map((product) => {
             return (
               <Product key={product.id} product={product} loadCart={loadCart} />
             );

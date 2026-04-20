@@ -1,32 +1,38 @@
-import React from "react";
 import { Link } from "react-router";
 import "./Header.css";
 
-export const Header = ({ cart }) => {
-  // cart.forEach((cartItem) => {
-  //   totalQuantity += cartItem.quantity;
-  // });
-
+export const Header = ({ cart, setSearchQuery, searchQuery }) => {
   let totalQuantity = 0;
   for (let i = 0; i < cart.length; i++) {
     totalQuantity += cart[i].quantity;
   }
-  //   const totalQuantity = cart.reduce((total, item) => {
-  //   return total + item.quantity;
-  // }, 0);
 
   return (
     <>
       <div className="header">
         <div className="left-section">
-          <Link to="/" className="header-link">
+          <Link
+            to="/"
+            className="header-link"
+            onClick={() => {
+              setSearchQuery("");
+            }}
+          >
             <img className="logo" src="images/logo-white.png" />
             <img className="mobile-logo" src="images/mobile-logo-white.png" />
           </Link>
         </div>
 
         <div className="middle-section">
-          <input className="search-bar" type="text" placeholder="Search" />
+          <input
+            className="search-bar"
+            type="text"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={(event) => {
+              setSearchQuery(event.target.value);
+            }}
+          />
 
           <button className="search-button">
             <img className="search-icon" src="images/icons/search-icon.png" />
