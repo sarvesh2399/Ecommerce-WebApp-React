@@ -5,7 +5,7 @@ import { CheckoutPageHeader } from "../../components/header/CheckoutPageHeader";
 import { formatMoney } from "../../utils/money";
 import dayjs from "dayjs";
 
-export const CheckoutPage = ({ cart }) => {
+export const CheckoutPage = ({ cart, loadCart }) => {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
   const [paymentSummary, setPaymentSummary] = useState(null);
   // console.log(cart)
@@ -17,15 +17,20 @@ export const CheckoutPage = ({ cart }) => {
           "/api/delivery-options?expand=estimatedDeliveryTime",
         );
         setDeliveryOptions(deliveryOptionsRes.data);
-
-        const paymentSummaryRes = await axios.get("/api/payment-summary");
-        setPaymentSummary(paymentSummaryRes.data);
       } catch (err) {
         console.error(err);
       }
     };
     getData();
   }, []);
+
+  useEffect(() => {
+    const getPaymentSummary = async () => {
+      const paymentSummaryRes = await axios.get("/api/payment-summary");
+      setPaymentSummary(paymentSummaryRes.data);
+    };
+    getPaymentSummary();
+  }, [cart]);
 
   return (
     <>
@@ -92,13 +97,23 @@ export const CheckoutPage = ({ cart }) => {
                           if (deliveryOption.priceCents > 0) {
                             priceString = `${formatMoney(deliveryOption.priceCents)} - Shipping`;
                           }
-
+                          const updateDeliveryOption = async () => {
+                            await axios.put(
+                              `api/cart-items/${cartItem.productId}`,
+                              {
+                                deliveryOptionId: deliveryOption.id,
+                              },
+                            );
+                            await loadCart();
+                          };
                           return (
                             <div
                               key={deliveryOption.id}
                               className="delivery-option"
+                              onClick={updateDeliveryOption}
                             >
                               <input
+                                onChange={() => {}}
                                 type="radio"
                                 checked={
                                   deliveryOption.id ===
