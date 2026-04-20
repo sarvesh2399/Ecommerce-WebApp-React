@@ -5,6 +5,7 @@ import axios from "axios";
 import { CheckoutPageHeader } from "../../components/header/CheckoutPageHeader";
 import { formatMoney } from "../../utils/money";
 import dayjs from "dayjs";
+import { UpdateQuantity } from "../../components/checkout/UpdateQuantity";
 
 export const CheckoutPage = ({ cart, loadCart }) => {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
@@ -39,6 +40,8 @@ export const CheckoutPage = ({ cart, loadCart }) => {
     getPaymentSummary();
   }, [cart]);
 
+  // const [quantity, setQuantity] = useState(cartItem.quantity);
+
   return (
     <>
       <title>Checkout</title>
@@ -60,6 +63,7 @@ export const CheckoutPage = ({ cart, loadCart }) => {
                   await axios.delete(`api/cart-items/${cartItem.productId}`);
                   await loadCart();
                 };
+
                 return (
                   <div key={cartItem.id} className="cart-item-container">
                     <div className="delivery-date">
@@ -79,26 +83,33 @@ export const CheckoutPage = ({ cart, loadCart }) => {
                         <div className="product-name">
                           {cartItem.product.name}
                         </div>
-                        {/* <div className="product-price">{`$${(cartItem.priceCents / 100).toFixed(2)}`}</div> */}
+                
                         <div className="product-price">
                           {formatMoney(cartItem.product.priceCents)}
                         </div>
                         <div className="product-quantity">
-                          <span>
+                          <span
+                            style={{ display: "flex", alignItems: "center" }}
+                          >
                             Quantity:{" "}
-                            <span className="quantity-label">
-                              {cartItem.quantity}
+                            <span
+                              style={{ marginLeft: "10px" }}
+                              className="quantity-label"
+                            >
+                              <UpdateQuantity cartItem={cartItem} loadCart={loadCart}/>
                             </span>
                           </span>
-                          <span className="update-quantity-link link-primary">
-                            Update
-                          </span>
-                          <span
-                            className="delete-quantity-link link-primary"
-                            onClick={deleteCartItem}
+                          <br />
+                          <div
                           >
-                            Delete
-                          </span>
+                           
+                            <span
+                              className="delete-quantity-link link-primary"
+                              onClick={deleteCartItem}
+                            >
+                              Delete
+                            </span>
+                          </div>
                         </div>
                       </div>
 
