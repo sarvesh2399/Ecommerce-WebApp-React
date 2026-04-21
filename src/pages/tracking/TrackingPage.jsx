@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router";
 import { Header } from "../../components/header/Header";
-import React, { useEffect, useState } from "react";
+import   { useEffect, useState } from "react";
 import "./TrackingPage.css";
 import dayjs from "dayjs";
 import axios from "axios";
