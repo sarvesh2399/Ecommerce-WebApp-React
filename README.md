@@ -83,7 +83,8 @@ npm run dev
 
 ### 4. Setup Backend
 
-```The backend has not yet been added to my GitHub repository
+```bash id="c3k8zd"
+The backend has not yet been added to my GitHub repository
 ```
 
 ---
