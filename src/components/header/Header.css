@@ -14,6 +14,15 @@
   right: 0;
   height: 60px;
 }
+.logo-image {
+  height: 35px;
+  margin-left: 10px;
+}
+.logo-style{
+  display: flex;
+  align-items: center;
+
+}
 
 .header .left-section {
   width: 208px;
@@ -35,7 +44,7 @@
 }
 
 .header .header-link:hover {
-  border: 1px solid white;
+  /* border: 1px solid white; */
 }
 
 .header .logo {
@@ -45,6 +54,12 @@
 
 .header .mobile-logo {
   display: none;
+  color: white;
+  margin: 0;
+}
+.header .logo-text {
+  color: white;
+  margin: 0;
 }
 
 @media (max-width: 675px) {

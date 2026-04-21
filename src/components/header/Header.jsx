@@ -18,8 +18,16 @@ export const Header = ({ cart, setSearchQuery, searchQuery }) => {
               setSearchQuery("");
             }}
           >
-            <img className="logo" src="images/logo-white.png" />
-            <img className="mobile-logo" src="images/mobile-logo-white.png" />
+            {/* <img style={{height:"45px", width : "100px"}} className="logo" src="../../public/images/logo1.png" /> */}
+            <div className="logo-style">
+              <h1 className="logo-text">SSP</h1>
+
+              <img
+                className="logo-image"
+                src="../../public/images/diamond.png"
+                alt="logo"
+              />
+            </div>
           </Link>
         </div>
 

@@ -9,9 +9,16 @@ export const CheckoutPageHeader = ({ cart }) => {
       <div className="checkout-header">
         <div className="header-content">
           <div className="checkout-header-left-section">
-            <Link to="/">
-              <img className="logo" src="images/logo.png" />
-              <img className="mobile-logo" src="images/mobile-logo.png" />
+            <Link className="header-logo-decoration" to="/">
+              <div className="logo-style">
+              <h1 className="logo-text">SSP</h1>
+
+              <img
+                className="logo-image"
+                src="../../public/images/diamond.png"
+                alt="logo"
+              />
+            </div>
             </Link>
           </div>
 
